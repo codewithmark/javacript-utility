@@ -210,7 +210,34 @@ j.removeOnce("theme.css");
 </script>
 ```
 
+```js
+<table id="myTable"></table>
+
+<script>
+  const data = [
+    { Name: "Alice", Age: 25, City: "New York" },
+    { Name: "Bob", Age: 30, City: "Los Angeles" }
+  ];
+
+  jsonToTable(data, '#myTable');
+</script>
 ---
+
+<table id="myTable">
+  <thead>
+    <tr><th>Name</th><th>Age</th><th>City</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>Alice</td><td>25</td><td>New York</td></tr>
+    <tr><td>Bob</td><td>30</td><td>Los Angeles</td></tr>
+  </tbody>
+</table>
+
+<script>
+  const result = tableToJSON('#myTable');
+  console.log(result);
+</script>
+ 
 
 ## 🧑‍💻 Author
 
