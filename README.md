@@ -2,7 +2,7 @@
 
 A simple, self-contained utility class for common frontend tasks. No dependencies — no jQuery, no Lodash. Great for beginner web developers or small projects!
 
-## 🚀 Features
+## 🚀 Features 
 
 * Generate random codes
 * Modify page title dynamically
