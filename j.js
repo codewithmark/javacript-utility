@@ -135,4 +135,73 @@ class JSUtils {
       }
     });
   }
+
+  static jsonToTable(jsonArray, tableSelector) {
+    if (!Array.isArray(jsonArray) || jsonArray.length === 0) return;
+
+    const table = document.querySelector(tableSelector);
+    if (!table) return;
+
+    const thead = document.createElement('thead');
+    const tbody = document.createElement('tbody');
+
+    // Get headers from keys of first object
+    const headers = Object.keys(jsonArray[0]);
+    const headRow = document.createElement('tr');
+    headers.forEach(key => {
+      const th = document.createElement('th');
+      th.textContent = key;
+      headRow.appendChild(th);
+    });
+    thead.appendChild(headRow);
+
+    // Create rows
+    jsonArray.forEach(item => {
+      const row = document.createElement('tr');
+      headers.forEach(key => {
+        const td = document.createElement('td');
+        td.textContent = item[key];
+        row.appendChild(td);
+      });
+      tbody.appendChild(row);
+    });
+
+    // Clear and populate the table
+    table.innerHTML = '';
+    table.appendChild(thead);
+    table.appendChild(tbody);
+  }
+
+  static  jsonToTable(jsonArray) {
+    if (!Array.isArray(jsonArray) || jsonArray.length === 0) return null;
+
+    const table = document.createElement('table');
+    const thead = document.createElement('thead');
+    const tbody = document.createElement('tbody');
+
+    const headers = Object.keys(jsonArray[0]);
+    const headRow = document.createElement('tr');
+    headers.forEach(key => {
+      const th = document.createElement('th');
+      th.textContent = key;
+      headRow.appendChild(th);
+    });
+    thead.appendChild(headRow);
+
+    jsonArray.forEach(item => {
+      const row = document.createElement('tr');
+      headers.forEach(key => {
+        const td = document.createElement('td');
+        td.textContent = item[key];
+        row.appendChild(td);
+      });
+      tbody.appendChild(row);
+    });
+
+    table.appendChild(thead);
+    table.appendChild(tbody);
+
+    return table;
+  }
+
 }
